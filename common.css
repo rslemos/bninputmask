@@ -1,0 +1,86 @@
+body > div {
+  background: lightcyan;
+  border: 1px solid black;
+  margin: 3px;
+  padding: 5px 8px 13px 21px;
+}
+
+body > div:not(.pure) > * {
+  border: 1px dotted black;
+  border-radius: 3px;
+  width: 200px;
+}
+
+body > div:not(.pure).fixedheight > * {
+  height: 30px;
+}
+
+body > div:not(.pure).border > * {
+  border: 3px solid teal;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+body > div:not(.pure).margin > * {
+  margin: 3px 5px 8px 13px;
+}
+
+body > div:not(.pure).padding > * {
+  padding: 5px 8px 13px 21px;
+}
+
+body > div:not(.pure).color > * {
+  color: goldenrod;
+}
+
+body > div:not(.pure).font > * {
+  font-family: Courier New;
+  font-size: 20px;
+  font-weight: 900;
+  font-kerning: normal;
+  font-stretch: condensed;
+  font-style: italic;
+}
+
+body > div:not(.pure).text > * {
+  letter-spacing: -2px;
+  word-spacing: 300%;
+  text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+
+body > div:not(.pure).cursor > * {
+  cursor: help;
+}
+
+body > div:not(.pure).caret > * {
+  caret-color: palegreen;
+}
+
+body > div:not(.pure).background > * {
+  background: #959595; /* Old browsers */
+  background: -moz-linear-gradient(left, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 */
+  color: paleturquoise;
+  font-weight: 900;
+}
+
+body > div:not(.pure).placeholder > *::placeholder,
+body > div:not(.pure).placeholder > * placeholder {
+  color: orangered;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 115%;
+
+  letter-spacing: -3px;
+  word-spacing: 400%;
+  text-shadow: 2px 2px 3px orchid, 0 0 2em olivedrab, 0 0 0.2em blue;
+}
+
+body > div.common > span {
+  float: right;
+  border: none;
+  border-bottom: 1px dotted gray;
+  margin-left: 3px;
+}

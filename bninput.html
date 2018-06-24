@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="common.css">
+	<link rel="stylesheet" type="text/css" href="bninput.css">
+
+	<script type="text/javascript">
+		function addLabels() {
+			var elements = document.getElementsByClassName('common');
+			for(element of elements) {
+				for(class0 of element.classList) {
+					if (class0 !== 'common') {
+						var label = document.createElement('span');
+						label.textContent = class0;
+						element.appendChild(label);
+					}
+				}
+			}
+		}
+		function registerProperties() {
+			var elements = document.getElementsByTagName('bninput');
+			for(element of elements) {
+				// forward properties of nested input
+				Object.defineProperty(element, 
+					'value', {
+						get: function() { return this.children[0].value; },
+						set: function(value) { this.children[0].value = value; }
+					});
+				Object.defineProperty(element, 
+					'selectionStart', {
+						get: function() { return this.children[0].selectionStart; },
+						set: function(selectionStart) { this.children[0].selectionStart = selectionStart; }
+					});
+				Object.defineProperty(element, 
+					'selectionEnd', {
+						get: function() { return this.children[0].selectionEnd; },
+						set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; }
+					});
+				Object.defineProperty(element, 
+					'selectionDirection', {
+						get: function() { return this.children[0].selectionDirection; },
+						set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; }
+					});
+
+				if (element.children[0]) {
+					// bubbles focus and blur
+					element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
+					element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+
+					element.children[0].oninput = function(event) {
+						var ghost = this.parentElement.children[1].children[0];
+						var placeholder = this.parentElement.children[1].children[1];
+						var x = this.parentElement.getAttribute('data-placeholder');
+						ghost.textContent = String.fromCodePoint(8203) + this.value;
+						placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
+					}
+
+					element.children[0].oninput();
+				}
+			}
+		}
+	</script>
+</head>
+
+<body onload="addLabels(); registerProperties();">
+
+<div class="common pure">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common margin">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common padding">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common border">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common fixedheight">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common color">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common font">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common text">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common cursor">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common caret">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common background">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common placeholder">
+	<bninput data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+</body>
+</html>

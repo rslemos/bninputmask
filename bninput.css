@@ -1,0 +1,208 @@
+/***** inherit text properties *****/
+    bninput :not(placeholder) {
+        /* should not be overridden */
+        font: inherit !important;
+        color: inherit !important;
+        text-decoration: inherit !important;
+        text-emphasis: inherit !important;
+        text-indent: inherit !important;
+        text-overflow: inherit !important;
+        text-rendering: inherit !important;
+        text-shadow: inherit !important;
+        text-transform: inherit !important;
+        letter-spacing: inherit !important;
+        word-spacing: inherit !important;
+
+        color-adjust: inherit !important;
+        direction: inherit !important;
+    }
+
+    bninput placeholder {
+        /* may be overridden */
+        font: inherit;
+        color: inherit;
+        text-decoration: inherit;
+        text-emphasis: inherit;
+        text-indent: inherit;
+        text-overflow: inherit;
+        text-rendering: inherit;
+        text-shadow: inherit;
+        text-transform: inherit;
+        letter-spacing: inherit;
+        word-spacing: inherit;
+
+        color-adjust: inherit;
+        direction: inherit !important;
+    }
+/************************************/
+
+/********* align to baseline ********/
+
+    /* using flex */
+    bninput,
+    bninput > div {
+        display: inline-flex !important;
+        align-items: baseline !important;
+    }
+
+    /* without flex */
+    /* `vertical-align: baseline` has issues with `overwrite: hidden` */
+    bninput * {
+        display: inline-block !important;
+        vertical-align: baseline !important;
+    }
+/************************************/
+
+/*********** basic layout ***********/
+    bninput {
+        white-space: nowrap !important;
+    }
+
+    bninput * {
+        background: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        outline: none !important;
+
+        /* space collapsing et. al */
+        white-space: pre !important;
+
+        /* forbid properties that would screw the layout */
+        animation: unset !important; /* ??? */
+        transform: unset !important;
+        box-shadow: unset !important;
+        box-sizing: unset !important;
+        clip-path: unset !important;
+        filter: unset !important;
+        mask: unset !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        mix-blend-mode: unset !important;
+        text-align: unset !important;
+        visibility: unset !important;
+
+        align-self: unset !important;
+        justify-self: unset !important;
+
+        overflow: unset !important;
+        position: static !important;
+    }
+
+    bninput :not(placeholder) {
+        opacity: 1 !important;
+    }
+
+    bninput > * {
+        /* for flex aligned */
+        flex: 0 0 100% !important;
+        /* for no flex support */
+        width: 100% !important;
+
+        overflow: hidden !important;
+    }
+
+    bninput > div {
+        position: relative !important;
+        left: -100% !important;
+    }
+
+    bninput * {
+        height: 100% !important;
+    }
+
+    bninput > div > ghost {
+        visibility: hidden !important;
+    }
+/************************************/
+
+/********* pointer behavior *********/
+    bninput * {
+        cursor: inherit !important;
+    }
+
+    bninput > div {
+        pointer-events: none !important;
+    }
+/************************************/
+
+/******* forbidden properties *******/
+
+    /* masking undefined otherwise */
+    bninput {
+        text-align: left !important;
+        direction: ltr;
+    }
+
+    /* fixed properties for <input> */
+    bninput {
+        overflow: unset !important;
+    }
+/************************************/
+
+/************* defaults *************/
+
+    /* defaults */
+    bninput {
+        display: inline-block;
+        box-sizing: content-box;
+
+        /* defaults: native appearance */
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+    }
+
+    /* defaults: Firefox */
+
+    /* resource://gre-resources/forms.css */
+
+    bninput {
+        /* The sum of border and padding on block-start and block-end
+        must be the same here, for buttons, and for <select> (including its
+        internal padding magic) */
+        padding: 1px;
+    /*    border: 2px inset ThreeDLightShadow; */
+    /*    background-color: -moz-Field; */
+        color: -moz-FieldText;
+        font: -moz-field;
+        text-rendering: optimizeLegibility;
+        line-height: normal;
+        text-align: start;
+        text-transform: none;
+        word-spacing: normal;
+        letter-spacing: normal;
+        cursor: text;
+        -moz-binding: url("chrome://global/content/platformHTMLBindings.xml#inputFields");
+        text-indent: 0;
+        -moz-user-select: text;
+        text-shadow: none;
+        overflow-clip-box: padding-box content-box;
+
+        line-height: -moz-block-height;
+    }
+
+    bninput placeholder {
+        word-wrap: normal !important;
+
+        /* Make the line-height equal to the available height */
+        line-height: -moz-block-height;
+
+        display: inline-block;
+        ime-mode: inherit;
+        resize: inherit;
+        -moz-control-character-visibility: visible;
+        overflow-clip-box: inherit;
+    }
+
+    bninput placeholder {
+        /* resource://gre-resources/forms.css */
+        opacity: 0.54;
+    }
+
+    /* defaults: by trial and error */
+    bninput {
+        vertical-align: baseline;
+    }
