@@ -1,0 +1,45 @@
+bninput {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  overflow: hidden !important;
+
+  box-sizing: border-box;
+}
+
+bninput > input[type="text"] {
+  all: inherit;
+
+  width: 100% !important;
+  min-width: 100% !important;
+
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: none !important;
+}
+
+bninput > div {
+  display: flex !important;
+  align-items: baseline !important;
+  position: relative !important;
+  left: -100% !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  pointer-events: none !important;
+  /* nowrap to not wrap on big placeholders/text
+     pre to not collapse whitespaces */
+  white-space: pre !important;
+}
+
+bninput > div > * {
+  display: inline-block !important;
+}
+
+bninput > div span {
+  visibility: hidden !important;
+}
+
+bninput slot[name="placeholder"] {
+}
