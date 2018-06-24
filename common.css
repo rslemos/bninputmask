@@ -1,0 +1,39 @@
+div.common {
+  background: lightcyan;
+  border: 2px dotted navy;
+  margin: 3px;
+  padding: 5px 8px 13px 21px;
+}
+
+div.common > input::placeholder {
+  color: pink;
+  font-weight: 100;
+  font-style: normal;
+  font-size: 115%;
+}
+
+div.common > * {
+  width: 300px;
+
+  border: 2px solid teal;
+  margin: 3px;
+  padding: 5px 8px 13px 21px;
+
+  color: palegoldenrod;
+  font-family: Courier New;
+  font-size: 20px;
+  font-weight: 900;
+  font-kerning: normal;
+  font-stretch: condensed;
+  font-style: italic;
+
+  cursor: text;
+  caret-color: palegreen;
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#959595+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,1b1b1b+100;Black+Gloss+Pipe */
+  background: #959595; /* Old browsers */
+  background: -moz-linear-gradient(left, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #4e4e4e 76%, #383838 87%, #1b1b1b 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#1b1b1b',GradientType=1 ); /* IE6-9 */
+}
