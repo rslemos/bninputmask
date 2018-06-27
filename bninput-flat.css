@@ -1,0 +1,20 @@
+/* basic display as inline; block for configurable width */
+bninput-flat {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+/* do not overflow horizontally (scroll text instead) */
+bninput-flat {
+    overflow: hidden;
+}
+
+/* single-line */
+bninput-flat {
+    white-space: nowrap;
+}
+
+bninput-flat > br {
+    display: none;
+}
+

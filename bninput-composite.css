@@ -1,0 +1,62 @@
+bninput-composite {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+bninput-composite > input[type="text"] {
+    /* all: inherit; */
+    font: inherit;
+    color: inherit;
+
+    /* remove everything besides text (aka font & color) */
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+
+    /* full space */
+    width: 100%;
+}
+
+/* neben Benehmen */
+bninput-composite > input[type="text"] {
+    cursor: unset;
+}
+
+/* placeholder positioning */
+bninput-composite {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+bninput-composite > input[type="text"] {
+    flex: 1 0 100%;
+}
+
+bninput-composite > div {
+    position: relative;
+    left: -100%;
+}
+
+/* mouse skipping */
+bninput-composite > div {
+    pointer-events: none;
+}
+
+/* ghost hiding */
+bninput-composite > div > ghost {
+    visibility: hidden;
+}
+
+/* space collapsing et. al */
+bninput-composite > div {
+    white-space: pre;
+}
+
+/* big placeholders overflowing */
+bninput-composite > div {
+    overflow-x: hidden;
+    width: 100%;
+}

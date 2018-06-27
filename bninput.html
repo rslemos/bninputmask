@@ -3,21 +3,55 @@
 	<link rel="stylesheet" type="text/css" href="common.css">
 	<link rel="stylesheet" type="text/css" href="bninput-composite.css">
 	<link rel="stylesheet" type="text/css" href="bninput-flat.css">
+	<link rel="stylesheet" type="text/css" href="bninput-composite-with-flat.css">
+
+	<script type="text/javascript">
+		function registerProperties() {
+			// forward properties of nested input
+			let element = document.getElementById("bninput-composite");
+			Object.defineProperties(element, {
+				'value': {
+					get: function() { return this.children[0].value; },
+					set: function(value) { this.children[0].value = value; },
+				},
+				'selectionStart': {
+					get: function() { return this.children[0].selectionStart; },
+					set: function(selectionStart) { this.children[0].selectionStart = selectionStart; },
+				},
+				'selectionEnd': {
+					get: function() { return this.children[0].selectionEnd; },
+					set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; },
+				},
+				'selectionDirection': {
+					get: function() { return this.children[0].selectionDirection; },
+					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; },
+				},
+			});
+
+			// bubbles focus and blur
+			element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
+			element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+		}
+	</script>
 </head>
 
-<body>
+<body onload="registerProperties();">
 
 <div class="common">
-	<bninput-composite>
+	<bninput-composite id="bninput-composite">
+		<input type="text">
+		<div><ghost>&#8203;ghost</ghost><placeholder>placeholdercanbebibigigigigigig______ssss___</placeholder></div>
 	</bninput-composite>
 	<input type="text" placeholder="placeholder">
 	<input type="text" placeholder="placeholder">
 </div>
 
 <div class="common">
+	<bninput-composite-with-flat placeholder="placeholder">
+		<bninput-flat-inside-composite contenteditable="true" spellcheck="false">text inside</bninput-flat-inside-composite>
+	</bninput-composite-with-flat>
 	<input type="text" placeholder="placeholder">
-	<input type="text" placeholder="placeholder">
-	<bninput-flat contenteditable="true" placeholder="placeholder"></bninput-flat>
+	<bninput-flat placeholder="placeholder" contenteditable="true" spellcheck="false"></bninput-flat>
 </div>
 
 <p>This project aims to create a new element (either bninput-composite or 
@@ -27,6 +61,12 @@ bninput-flat or both) that mimics perfectly the original HTML5's input element.<
 does. And behave (from user's perspective) exactly the same. And be configurable 
 (through CSS rules) exactly the same. And expose (from programmer's perspective) 
 the very same properties and events.</p>
+
+<p><pre>contenteditable</pre>is no go because user can paste rich text (italics, 
+bold, font-size, paragraphs ...). To go around this would be too clumsy and 
+require lots of javascript. So it is a no go.</p>
+
+<p>Back to composite <pre>input</pre>.</p>
 
 </body>
 </html>

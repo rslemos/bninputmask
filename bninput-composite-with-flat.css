@@ -1,0 +1,31 @@
+/* basic display as inline; block for configurable width */
+bninput-composite-with-flat {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+/* grabs all space */
+bninput-composite-with-flat > bninput-flat-inside-composite {
+    width: 100%;
+}
+
+/* do not overflow horizontally (scroll text instead) */
+bninput-composite-with-flat > bninput-flat-inside-composite {
+    display: inline-block;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* single-line */
+bninput-composite-with-flat > bninput-flat-inside-composite {
+    white-space: nowrap;
+}
+
+bninput-composite-with-flat > bninput-flat-inside-composite > br {
+    display: none;
+}
+
+/* no draw outline */
+bninput-composite-with-flat > bninput-flat-inside-composite {
+    outline: none;
+}

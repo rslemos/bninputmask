@@ -5,7 +5,8 @@ div.common {
   padding: 5px 8px 13px 21px;
 }
 
-div.common > input::placeholder {
+div.common > input::placeholder,
+div.common > bninput-composite placeholder {
   color: pink;
   font-weight: 100;
   font-style: normal;
@@ -27,7 +28,7 @@ div.common > * {
   font-stretch: condensed;
   font-style: italic;
 
-  cursor: text;
+  cursor: help;
   caret-color: palegreen;
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#959595+0,0d0d0d+46,010101+50,0a0a0a+53,4e4e4e+76,383838+87,1b1b1b+100;Black+Gloss+Pipe */
