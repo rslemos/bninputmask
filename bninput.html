@@ -10,29 +10,33 @@
 	<script type="text/javascript">
 		function registerProperties() {
 			// forward properties of nested input
-			let element = document.getElementById("bninput-composite");
-			Object.defineProperties(element, {
-				'value': {
+			var element = document.getElementById("bninput-composite");
+			Object.defineProperty(element, 
+				'value', {
 					get: function() { return this.children[0].value; },
 					set: function(value) { this.children[0].value = value; },
-				},
-				'selectionStart': {
+				});
+			Object.defineProperty(element, 
+				'selectionStart', {
 					get: function() { return this.children[0].selectionStart; },
 					set: function(selectionStart) { this.children[0].selectionStart = selectionStart; },
-				},
-				'selectionEnd': {
+				});
+			Object.defineProperty(element, 
+				'selectionEnd', {
 					get: function() { return this.children[0].selectionEnd; },
 					set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; },
-				},
-				'selectionDirection': {
+				});
+			Object.defineProperty(element, 
+				'selectionDirection', {
 					get: function() { return this.children[0].selectionDirection; },
 					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; },
-				},
-			});
+				});
 
-			// bubbles focus and blur
-			element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
-			element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+			if (element.children[0]) {
+				// bubbles focus and blur
+				element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
+				element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+			}
 		}
 	</script>
 </head>
