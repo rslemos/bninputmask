@@ -31,7 +31,7 @@ bninput-composite {
     align-items: baseline;
 }
 
-bninput-composite > input[type="text"] {
+bninput-composite > * {
     flex: 1 0 100%;
 }
 
