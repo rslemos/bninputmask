@@ -6,7 +6,8 @@ div.common {
 }
 
 div.common > input::placeholder,
-div.common > bninput-composite placeholder {
+div.common > bninput-composite placeholder,
+div.common > bninput-composite .placeholder {
   color: pink;
   font-weight: 100;
   font-style: normal;
