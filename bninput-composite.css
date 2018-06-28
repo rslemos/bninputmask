@@ -5,6 +5,8 @@ bninput-composite {
 
 bninput-composite > * {
     all: inherit;
+    font: inherit;
+    color: inherit;
 }
 
 bninput-composite > *,
