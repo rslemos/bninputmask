@@ -7,6 +7,9 @@ bninput-composite > input[type="text"] {
     /* all: inherit; */
     font: inherit;
     color: inherit;
+}
+
+bninput-composite > * {
 
     /* remove everything besides text (aka font & color) */
     background: none;
