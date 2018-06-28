@@ -41,6 +41,7 @@ bninput-composite > div {
 }
 
 bninput-composite > div > * {
+    display: inline;
     vertical-align: text-bottom;
 }
 
