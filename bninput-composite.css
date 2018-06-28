@@ -84,3 +84,17 @@ bninput-composite > input[type="text"]:hover {
     outline: none;
     border: none;
 }
+
+/* defaults */
+
+bninput-composite placeholder {
+    /* resource://gre-resources/forms.css */
+    opacity: 0.54;
+}
+
+/* defaults: native appearance */
+bninput-composite {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
