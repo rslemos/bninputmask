@@ -68,6 +68,60 @@ bninput-composite > * {
 
 /* defaults */
 
+/* defaults: Firefox */
+
+/* resource://gre-resources/forms.css */
+
+bninput-composite {
+    -moz-appearance: textfield;
+    /* The sum of border and padding on block-start and block-end
+       must be the same here, for buttons, and for <select> (including its
+       internal padding magic) */
+    padding: 1px;
+/*    border: 2px inset ThreeDLightShadow; */
+/*    background-color: -moz-Field; */
+    color: -moz-FieldText;
+    font: -moz-field;
+    text-rendering: optimizeLegibility;
+    line-height: normal;
+    text-align: start;
+    text-transform: none;
+    word-spacing: normal;
+    letter-spacing: normal;
+    cursor: text;
+    -moz-binding: url("chrome://global/content/platformHTMLBindings.xml#inputFields");
+    text-indent: 0;
+    -moz-user-select: text;
+    text-shadow: none;
+    overflow-clip-box: padding-box content-box;
+}
+
+bninput-composite placeholder {
+    word-wrap: normal !important;
+    /* Make the line-height equal to the available height */
+    line-height: -moz-block-height;
+}
+
+bninput-composite {
+    line-height: -moz-block-height;
+}
+
+bninput-composite placeholder {
+    overflow: auto;
+    border: 0px !important;
+    padding: inherit !important;
+    margin: 0px;
+    text-decoration: inherit;
+    text-decoration-color: inherit;
+    text-decoration-style: inherit;
+    display: inline-block;
+    ime-mode: inherit;
+    resize: inherit;
+    -moz-control-character-visibility: visible;
+    overflow-clip-box: inherit;
+}
+
+
 bninput-composite placeholder {
     /* resource://gre-resources/forms.css */
     opacity: 0.54;
@@ -78,4 +132,12 @@ bninput-composite {
     -moz-appearance: textfield;
     -webkit-appearance: textfield;
     appearance: textfield;
+}
+
+/* defaults: by trial and error */
+bninput-composite {
+    height: 1.5em;
+    vertical-align: baseline;
+    --size: attr(data-size number, 20);
+    width: calc(var(--size)*1.1215ch);
 }
