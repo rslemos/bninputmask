@@ -138,7 +138,7 @@ bninput-composite {
 
 /* defaults: by trial and error */
 bninput-composite {
-    height: 1.5em;
+/*    height: 1.5em;*/
     vertical-align: baseline;
     --size: attr(data-size number, 20);
     width: calc(var(--size)*1.1215ch);
