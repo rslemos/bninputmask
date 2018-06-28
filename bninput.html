@@ -14,22 +14,22 @@
 			Object.defineProperty(element, 
 				'value', {
 					get: function() { return this.children[0].value; },
-					set: function(value) { this.children[0].value = value; },
+					set: function(value) { this.children[0].value = value; }
 				});
 			Object.defineProperty(element, 
 				'selectionStart', {
 					get: function() { return this.children[0].selectionStart; },
-					set: function(selectionStart) { this.children[0].selectionStart = selectionStart; },
+					set: function(selectionStart) { this.children[0].selectionStart = selectionStart; }
 				});
 			Object.defineProperty(element, 
 				'selectionEnd', {
 					get: function() { return this.children[0].selectionEnd; },
-					set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; },
+					set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; }
 				});
 			Object.defineProperty(element, 
 				'selectionDirection', {
 					get: function() { return this.children[0].selectionDirection; },
-					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; },
+					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; }
 				});
 
 			if (element.children[0]) {
