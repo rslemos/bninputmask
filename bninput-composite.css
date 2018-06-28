@@ -26,13 +26,12 @@ bninput-composite > input[type="text"] {
 
 /* placeholder positioning */
 bninput-composite {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: baseline;
+    white-space: nowrap;
 }
 
 bninput-composite > * {
-    flex: 1 0 100%;
+    display: inline-block;
+    vertical-align: text-bottom;
 }
 
 bninput-composite > div {
@@ -64,20 +63,12 @@ bninput-composite > div {
 /* make IE happy */
 bninput-composite > div {
     overflow-y: hidden;
-    display: inline-block;
 }
 
 bninput-composite > input[type="text"] {
     cursor: inherit;
 }
 
-bninput-composite {
-    white-space: nowrap;
-}
-
-bninput-composite > * {
-    vertical-align: text-bottom;
-}
 
 bninput-composite > input[type="text"]:focus,
 bninput-composite > input[type="text"]:hover {
