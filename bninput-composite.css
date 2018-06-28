@@ -57,7 +57,7 @@ bninput-composite > div > ghost {
 }
 
 /* space collapsing et. al */
-bninput-composite > div {
+bninput-composite > * {
     white-space: pre;
 }
 
