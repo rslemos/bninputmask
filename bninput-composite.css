@@ -3,28 +3,26 @@ bninput-composite {
     box-sizing: border-box;
 }
 
-bninput-composite > input[type="text"] {
-    /* all: inherit; */
-    font: inherit;
-    color: inherit;
+bninput-composite > * {
+    all: inherit;
 }
 
 bninput-composite > * {
 
     /* remove everything besides text (aka font & color) */
-    background: none;
-    padding: 0;
-    margin: 0;
-    border: none;
-    outline: none;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    outline: none !important;
 
     /* full space */
-    width: 100%;
+    width: 100% !important;
 }
 
 /* neben Benehmen */
-bninput-composite > input[type="text"] {
-    cursor: unset;
+bninput-composite > * {
+    cursor: inherit !important;
 }
 
 /* placeholder positioning */
@@ -71,11 +69,6 @@ bninput-composite > div {
 bninput-composite > div {
     overflow-y: hidden;
 }
-
-bninput-composite > input[type="text"] {
-    cursor: inherit;
-}
-
 
 bninput-composite > input[type="text"]:focus,
 bninput-composite > input[type="text"]:hover {
