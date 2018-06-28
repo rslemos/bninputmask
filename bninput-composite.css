@@ -42,6 +42,10 @@ bninput-composite > div {
     left: -100%;
 }
 
+bninput-composite > div > * {
+    vertical-align: text-bottom;
+}
+
 /* mouse skipping */
 bninput-composite > div {
     pointer-events: none;
