@@ -45,8 +45,9 @@ bninput-composite > div {
 }
 
 bninput-composite > div > * {
-    display: inline;
+    display: inline-block;
     vertical-align: text-bottom;
+    height: 100%;
 }
 
 /* mouse skipping */
