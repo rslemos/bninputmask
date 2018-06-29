@@ -32,10 +32,18 @@
 					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; }
 				});
 
+			var ghost = element.children[1].children[0];
+			var placeholder = element.children[1].children[1];
+			var x = element.getAttribute('data-placeholder');
 			if (element.children[0]) {
 				// bubbles focus and blur
 				element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
 				element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+
+				element.children[0].oninput = function(event) {
+					ghost.textContent = String.fromCodePoint(8203) + this.value;
+					placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
+				}
 			}
 		}
 	</script>
@@ -44,8 +52,8 @@
 <body onload="registerProperties();">
 
 <div class="common">
-	<bninput-composite id="bninput-composite" data-size="10">
-		<input type="text"><div><ghost>&#8203;ghost</ghost><placeholder class="placeholder">placeholdercanbebibigigigigigig______ssss___</placeholder></div>
+	<bninput-composite id="bninput-composite" data-size="10" data-placeholder="000.000.000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder class="placeholder"></placeholder></div>
 	</bninput-composite>
 	<input type="text" placeholder="placeholder">
 	<input type="text" placeholder="placeholder">
