@@ -1,18 +1,42 @@
 bninput-composite {
-    display: inline-block;
-    box-sizing: border-box;
-}
+    /* placeholder positioning */
+    white-space: nowrap !important;
 
-bninput-composite > * {
-    all: inherit;
-    font: inherit;
-    color: inherit;
+    /* input does not accept overflow; so do us */
+    overflow: unset !important;
 }
 
 bninput-composite > *,
 bninput-composite > *:focus,
-bninput-composite > *:hover {
+bninput-composite > *:hover,
+bninput-composite > div > ghost {
+    font: inherit !important;
+    color: inherit !important;
+    text-decoration: inherit !important;
+    text-decoration-color: inherit !important;
+    text-decoration-style: inherit !important;
+    text-rendering: inherit !important;
+}
 
+/* align to baseline using flex */
+bninput-composite,
+bninput-composite > div {
+    display: inline-flex !important;
+    align-items: baseline !important;
+}
+
+bninput-composite > * {
+    flex: 0 0 100% !important;
+}
+
+bninput-composite > div > * {
+    flex: 0 0 0% !important;
+}
+
+/**********************************/
+
+bninput-composite > *,
+bninput-composite > div > * {
     /* remove everything besides text (aka font & color) */
     background: none !important;
     padding: 0 !important;
@@ -20,62 +44,59 @@ bninput-composite > *:hover {
     border: none !important;
     outline: none !important;
 
+    /* neben Benehmen */
+    cursor: inherit !important;
+
+    /* space collapsing et. al */
+    white-space: pre !important;
+
+    /* align to baseline (if no flex) */
+    display: inline-block !important;
+    vertical-align: baseline !important;
+}
+
+
+bninput-composite > * {
     /* full space */
     width: 100% !important;
-
-    overflow: hidden;
-}
-
-/* neben Benehmen */
-bninput-composite > * {
-    cursor: inherit !important;
-}
-
-/* placeholder positioning */
-bninput-composite {
-    white-space: nowrap;
-}
-
-bninput-composite > * {
-    display: inline-block;
-    vertical-align: text-bottom;
+    overflow: hidden !important;
 }
 
 bninput-composite > div {
-    position: relative;
-    left: -100%;
+    position: relative !important;
+    left: -100% !important;
+
+    /* mouse skipping */
+    pointer-events: none !important;
 }
 
+bninput-composite > input[type="text"],
 bninput-composite > div > * {
-    display: inline-block;
-    vertical-align: text-bottom;
-    height: 100%;
+    height: 100% !important;
 }
 
-/* mouse skipping */
-bninput-composite > div {
-    pointer-events: none;
-}
-
-/* ghost hiding */
 bninput-composite > div > ghost {
-    visibility: hidden;
-}
-
-/* space collapsing et. al */
-bninput-composite > * {
-    white-space: pre;
+    /* ghost hiding */
+    visibility: hidden !important;
 }
 
 
 /* defaults */
+bninput-composite {
+    display: inline-block;
+    box-sizing: border-box;
+
+    /* defaults: native appearance */
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    appearance: textfield;
+}
 
 /* defaults: Firefox */
 
 /* resource://gre-resources/forms.css */
 
 bninput-composite {
-    -moz-appearance: textfield;
     /* The sum of border and padding on block-start and block-end
        must be the same here, for buttons, and for <select> (including its
        internal padding magic) */
@@ -96,26 +117,15 @@ bninput-composite {
     -moz-user-select: text;
     text-shadow: none;
     overflow-clip-box: padding-box content-box;
+
+    line-height: -moz-block-height;
 }
 
 bninput-composite placeholder {
     word-wrap: normal !important;
     /* Make the line-height equal to the available height */
     line-height: -moz-block-height;
-}
 
-bninput-composite {
-    line-height: -moz-block-height;
-}
-
-bninput-composite placeholder {
-    overflow: auto;
-    border: 0px !important;
-    padding: inherit !important;
-    margin: 0px;
-    text-decoration: inherit;
-    text-decoration-color: inherit;
-    text-decoration-style: inherit;
     display: inline-block;
     ime-mode: inherit;
     resize: inherit;
@@ -127,13 +137,6 @@ bninput-composite placeholder {
 bninput-composite placeholder {
     /* resource://gre-resources/forms.css */
     opacity: 0.54;
-}
-
-/* defaults: native appearance */
-bninput-composite {
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    appearance: textfield;
 }
 
 /* defaults: by trial and error */
