@@ -1,85 +1,97 @@
-bninput-composite {
-    /* placeholder positioning */
-    white-space: nowrap !important;
-
-    /* input does not accept overflow; so do us */
-    overflow: unset !important;
-}
-
-bninput-composite > *,
-bninput-composite > *:focus,
-bninput-composite > *:hover,
-bninput-composite > div > ghost {
+/***** inherit text properties *****/
+bninput-composite :not(placeholder) {
+    /* should not be overridden */
     font: inherit !important;
     color: inherit !important;
     text-decoration: inherit !important;
-    text-decoration-color: inherit !important;
-    text-decoration-style: inherit !important;
     text-rendering: inherit !important;
 }
 
-/* align to baseline using flex */
-bninput-composite,
-bninput-composite > div {
-    display: inline-flex !important;
-    align-items: baseline !important;
+bninput-composite placeholder {
+    /* may be overridden */
+    font: inherit;
+    color: inherit;
+    text-decoration: inherit;
+    text-rendering: inherit;
+}
+/************************************/
+
+/********* align to baseline ********/
+
+    /* using flex */
+    bninput-composite,
+    bninput-composite > div {
+        display: inline-flex !important;
+        align-items: baseline !important;
+    }
+
+    bninput-composite > * {
+        flex: 0 0 100% !important;
+    }
+
+    bninput-composite > div > * {
+        flex: 0 0 0% !important;
+    }
+
+    /* without flex */
+    /* `vertical-align: baseline` has issues with `overwrite: hidden` */
+    bninput-composite > *,
+    bninput-composite > div > * {
+        display: inline-block !important;
+        vertical-align: baseline !important;
+    }
+/************************************/
+
+/*********** basic layout ***********/
+    bninput-composite {
+        white-space: nowrap !important;
+    }
+
+    bninput-composite * {
+        background: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        outline: none !important;
+
+        /* space collapsing et. al */
+        white-space: pre !important;
+    }
+
+    bninput-composite > * {
+        /* full space */
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    bninput-composite > div {
+        position: relative !important;
+        left: -100% !important;
+    }
+
+    bninput-composite * {
+        height: 100% !important;
+    }
+
+    bninput-composite > div > ghost {
+        visibility: hidden !important;
+    }
+/************************************/
+
+bninput-composite {
+    /* input does not accept overflow; neighter do us */
+    overflow: unset !important;
 }
 
-bninput-composite > * {
-    flex: 0 0 100% !important;
-}
-
-bninput-composite > div > * {
-    flex: 0 0 0% !important;
-}
-
-/**********************************/
-
-bninput-composite > *,
-bninput-composite > div > * {
-    /* remove everything besides text (aka font & color) */
-    background: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: none !important;
-    outline: none !important;
-
+bninput-composite * {
     /* neben Benehmen */
     cursor: inherit !important;
-
-    /* space collapsing et. al */
-    white-space: pre !important;
-
-    /* align to baseline (if no flex) */
-    display: inline-block !important;
-    vertical-align: baseline !important;
-}
-
-
-bninput-composite > * {
-    /* full space */
-    width: 100% !important;
-    overflow: hidden !important;
 }
 
 bninput-composite > div {
-    position: relative !important;
-    left: -100% !important;
-
     /* mouse skipping */
     pointer-events: none !important;
 }
-
-bninput-composite > input[type="text"],
-bninput-composite > div > * {
-    height: 100% !important;
-}
-
-bninput-composite > div > ghost {
-    /* ghost hiding */
-    visibility: hidden !important;
-}
-
 
 /* defaults */
 bninput-composite {
@@ -123,6 +135,7 @@ bninput-composite {
 
 bninput-composite placeholder {
     word-wrap: normal !important;
+
     /* Make the line-height equal to the available height */
     line-height: -moz-block-height;
 
@@ -141,8 +154,5 @@ bninput-composite placeholder {
 
 /* defaults: by trial and error */
 bninput-composite {
-/*    height: 1.5em;*/
     vertical-align: baseline;
-    --size: attr(data-size number, 20);
-    width: calc(var(--size)*1.1215ch);
 }

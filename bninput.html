@@ -44,6 +44,8 @@
 					ghost.textContent = String.fromCodePoint(8203) + this.value;
 					placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
 				}
+
+				element.children[0].oninput();
 			}
 		}
 	</script>
@@ -53,7 +55,7 @@
 
 <div class="common">
 	<bninput-composite id="bninput-composite" data-size="10" data-placeholder="000.000.000-00">
-		<input type="text"><div><ghost>&#8203;</ghost><placeholder class="placeholder"></placeholder></div>
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder class="placeholder">&#8203;</placeholder></div>
 	</bninput-composite>
 	<input type="text" placeholder="placeholder">
 	<input type="text" placeholder="placeholder">
