@@ -25,9 +25,6 @@ bninput-composite placeholder {
         align-items: baseline !important;
     }
 
-    bninput-composite > * {
-    }
-
     /* without flex */
     /* `vertical-align: baseline` has issues with `overwrite: hidden` */
     bninput-composite * {
@@ -75,81 +72,95 @@ bninput-composite placeholder {
     }
 /************************************/
 
-bninput-composite {
-    /* input does not accept overflow; neighter do us */
-    overflow: unset !important;
-}
+/********* pointer behavior *********/
+    bninput-composite * {
+        cursor: inherit !important;
+    }
 
-bninput-composite * {
-    /* neben Benehmen */
-    cursor: inherit !important;
-}
+    bninput-composite > div {
+        pointer-events: none !important;
+    }
+/************************************/
 
-bninput-composite > div {
-    /* mouse skipping */
-    pointer-events: none !important;
-}
+/******* forbidden properties *******/
 
-/* defaults */
-bninput-composite {
-    display: inline-block;
-    box-sizing: border-box;
+    /* masking undefined otherwise */
+    bninput-composite {
+        text-align: left !important;
 
-    /* defaults: native appearance */
-    -moz-appearance: textfield;
-    -webkit-appearance: textfield;
-    appearance: textfield;
-}
+    }
 
-/* defaults: Firefox */
+    /* fixed properties for <input> */
+    bninput-composite {
+        overflow: unset !important;
+    }
 
-/* resource://gre-resources/forms.css */
+/************* defaults *************/
 
-bninput-composite {
-    /* The sum of border and padding on block-start and block-end
-       must be the same here, for buttons, and for <select> (including its
-       internal padding magic) */
-    padding: 1px;
-/*    border: 2px inset ThreeDLightShadow; */
-/*    background-color: -moz-Field; */
-    color: -moz-FieldText;
-    font: -moz-field;
-    text-rendering: optimizeLegibility;
-    line-height: normal;
-    text-align: start;
-    text-transform: none;
-    word-spacing: normal;
-    letter-spacing: normal;
-    cursor: text;
-    -moz-binding: url("chrome://global/content/platformHTMLBindings.xml#inputFields");
-    text-indent: 0;
-    -moz-user-select: text;
-    text-shadow: none;
-    overflow-clip-box: padding-box content-box;
+    bninput-composite {
+        display: inline-block;
+        box-sizing: border-box;
+    }
 
-    line-height: -moz-block-height;
-}
+    /* defaults */
+    bninput-composite {
+        display: inline-block;
+        box-sizing: border-box;
 
-bninput-composite placeholder {
-    word-wrap: normal !important;
+        /* defaults: native appearance */
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+    }
 
-    /* Make the line-height equal to the available height */
-    line-height: -moz-block-height;
+    /* defaults: Firefox */
 
-    display: inline-block;
-    ime-mode: inherit;
-    resize: inherit;
-    -moz-control-character-visibility: visible;
-    overflow-clip-box: inherit;
-}
-
-
-bninput-composite placeholder {
     /* resource://gre-resources/forms.css */
-    opacity: 0.54;
-}
 
-/* defaults: by trial and error */
-bninput-composite {
-    vertical-align: baseline;
-}
+    bninput-composite {
+        /* The sum of border and padding on block-start and block-end
+        must be the same here, for buttons, and for <select> (including its
+        internal padding magic) */
+        padding: 1px;
+    /*    border: 2px inset ThreeDLightShadow; */
+    /*    background-color: -moz-Field; */
+        color: -moz-FieldText;
+        font: -moz-field;
+        text-rendering: optimizeLegibility;
+        line-height: normal;
+        text-align: start;
+        text-transform: none;
+        word-spacing: normal;
+        letter-spacing: normal;
+        cursor: text;
+        -moz-binding: url("chrome://global/content/platformHTMLBindings.xml#inputFields");
+        text-indent: 0;
+        -moz-user-select: text;
+        text-shadow: none;
+        overflow-clip-box: padding-box content-box;
+
+        line-height: -moz-block-height;
+    }
+
+    bninput-composite placeholder {
+        word-wrap: normal !important;
+
+        /* Make the line-height equal to the available height */
+        line-height: -moz-block-height;
+
+        display: inline-block;
+        ime-mode: inherit;
+        resize: inherit;
+        -moz-control-character-visibility: visible;
+        overflow-clip-box: inherit;
+    }
+
+    bninput-composite placeholder {
+        /* resource://gre-resources/forms.css */
+        opacity: 0.54;
+    }
+
+    /* defaults: by trial and error */
+    bninput-composite {
+        vertical-align: baseline;
+    }
