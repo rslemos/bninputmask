@@ -8,8 +8,10 @@
 	<script type="text/javascript">
 		function addLabels() {
 			var elements = document.getElementsByClassName('common');
-			for(element of elements) {
-				for(class0 of element.classList) {
+			for(var i=0; i< elements.length; i++) {
+				var element = elements[i];
+				for(var j=0; j< element.classList.length; j++) {
+					var class0 = element.classList[j];
 					if (class0 !== 'common') {
 						var label = document.createElement('span');
 						label.textContent = class0;
@@ -20,7 +22,8 @@
 		}
 		function registerProperties() {
 			var elements = document.getElementsByTagName('bninput');
-			for(element of elements) {
+			for(var i=0; i< elements.length; i++) {
+				var element = elements[i];
 				// forward properties of nested input
 				Object.defineProperty(element, 
 					'value', {
@@ -52,8 +55,8 @@
 						var ghost = this.parentElement.children[1].children[0];
 						var placeholder = this.parentElement.children[1].children[1];
 						var x = this.parentElement.getAttribute('data-placeholder');
-						ghost.textContent = String.fromCodePoint(8203) + this.value;
-						placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
+						ghost.textContent = String.fromCharCode(8203) + this.value;
+						placeholder.textContent = String.fromCharCode(8203) + x.slice(this.value.length);
 					}
 
 					element.children[0].oninput();
