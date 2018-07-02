@@ -144,15 +144,10 @@
 
 /************* defaults *************/
 
-    bninput-composite {
-        display: inline-block;
-        box-sizing: border-box;
-    }
-
     /* defaults */
     bninput-composite {
         display: inline-block;
-        box-sizing: border-box;
+        box-sizing: content-box;
 
         /* defaults: native appearance */
         -moz-appearance: textfield;

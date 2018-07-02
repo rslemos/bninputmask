@@ -8,80 +8,148 @@
 	<link rel="stylesheet" type="text/css" href="bninput-composite-with-flat.css">
 
 	<script type="text/javascript">
-		function registerProperties() {
-			// forward properties of nested input
-			var element = document.getElementById("bninput-composite");
-			Object.defineProperty(element, 
-				'value', {
-					get: function() { return this.children[0].value; },
-					set: function(value) { this.children[0].value = value; }
-				});
-			Object.defineProperty(element, 
-				'selectionStart', {
-					get: function() { return this.children[0].selectionStart; },
-					set: function(selectionStart) { this.children[0].selectionStart = selectionStart; }
-				});
-			Object.defineProperty(element, 
-				'selectionEnd', {
-					get: function() { return this.children[0].selectionEnd; },
-					set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; }
-				});
-			Object.defineProperty(element, 
-				'selectionDirection', {
-					get: function() { return this.children[0].selectionDirection; },
-					set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; }
-				});
-
-			var ghost = element.children[1].children[0];
-			var placeholder = element.children[1].children[1];
-			var x = element.getAttribute('data-placeholder');
-			if (element.children[0]) {
-				// bubbles focus and blur
-				element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
-				element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
-
-				element.children[0].oninput = function(event) {
-					ghost.textContent = String.fromCodePoint(8203) + this.value;
-					placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
+		function addLabels() {
+			var elements = document.getElementsByClassName('common');
+			for(element of elements) {
+				for(class0 of element.classList) {
+					if (class0 !== 'common') {
+						var label = document.createElement('span');
+						label.textContent = class0;
+						element.appendChild(label);
+					}
 				}
+			}
+		}
+		function registerProperties() {
+			var elements = document.getElementsByTagName('bninput-composite');
+			for(element of elements) {
+				// forward properties of nested input
+				Object.defineProperty(element, 
+					'value', {
+						get: function() { return this.children[0].value; },
+						set: function(value) { this.children[0].value = value; }
+					});
+				Object.defineProperty(element, 
+					'selectionStart', {
+						get: function() { return this.children[0].selectionStart; },
+						set: function(selectionStart) { this.children[0].selectionStart = selectionStart; }
+					});
+				Object.defineProperty(element, 
+					'selectionEnd', {
+						get: function() { return this.children[0].selectionEnd; },
+						set: function(selectionEnd) { this.children[0].selectionEnd = selectionEnd; }
+					});
+				Object.defineProperty(element, 
+					'selectionDirection', {
+						get: function() { return this.children[0].selectionDirection; },
+						set: function(selectionDirection) { this.children[0].selectionDirection = selectionDirection; }
+					});
 
-				element.children[0].oninput();
+				if (element.children[0]) {
+					// bubbles focus and blur
+					element.children[0].onfocus = function(event) { this.parentElement.onfocus && this.parentElement.onfocus(event); };
+					element.children[0].onblur = function(event) { this.parentElement.onblur && this.parentElement.onblur(event); };
+
+					element.children[0].oninput = function(event) {
+						var ghost = this.parentElement.children[1].children[0];
+						var placeholder = this.parentElement.children[1].children[1];
+						var x = this.parentElement.getAttribute('data-placeholder');
+						ghost.textContent = String.fromCodePoint(8203) + this.value;
+						placeholder.textContent = String.fromCodePoint(8203) + x.slice(this.value.length);
+					}
+
+					element.children[0].oninput();
+				}
 			}
 		}
 	</script>
 </head>
 
-<body onload="registerProperties();">
+<body onload="addLabels(); registerProperties();">
 
-<div class="common">
-	<bninput-composite id="bninput-composite" data-size="10" data-placeholder="000.000.000-00">
-		<input type="text"><div><ghost>&#8203;</ghost><placeholder class="placeholder">&#8203;</placeholder></div>
+<div class="common pure">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
 	</bninput-composite>
-	<input type="text" placeholder="placeholder">
-	<input type="text" placeholder="placeholder">
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
 </div>
 
-<div class="common">
-	<bninput-composite-with-flat placeholder="placeholder">
-		<bninput-flat-inside-composite contenteditable="true" spellcheck="false">text inside</bninput-flat-inside-composite>
-	</bninput-composite-with-flat>
-	<input type="text" placeholder="placeholder">
-	<bninput-flat placeholder="placeholder" contenteditable="true" spellcheck="false"></bninput-flat>
+<div class="common margin">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
 </div>
 
-<p>This project aims to create a new element (either bninput-composite or 
-bninput-flat or both) that mimics perfectly the original HTML5's input element.</p>
+<div class="common padding">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
 
-<p>The perfect component shall join the layout flow exactly as the input element 
-does. And behave (from user's perspective) exactly the same. And be configurable 
-(through CSS rules) exactly the same. And expose (from programmer's perspective) 
-the very same properties and events.</p>
+<div class="common border">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
 
-<p><pre>contenteditable</pre>is no go because user can paste rich text (italics, 
-bold, font-size, paragraphs ...). To go around this would be too clumsy and 
-require lots of javascript. So it is a no go.</p>
+<div class="common fixedheight">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
 
-<p>Back to composite <pre>input</pre>.</p>
+<div class="common color">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common font">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common text">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common cursor">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common caret">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common background">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
+
+<div class="common placeholder">
+	<bninput-composite data-size="10" data-placeholder="000.000.000-00 ou 00.000.000/0000-00">
+		<input type="text"><div><ghost>&#8203;</ghost><placeholder>&#8203;</placeholder></div>
+	</bninput-composite>
+	<input type="text" placeholder="000.000.000-00 ou 00.000.000/0000-00">
+</div>
 
 </body>
 </html>
