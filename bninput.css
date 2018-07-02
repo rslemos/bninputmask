@@ -205,4 +205,24 @@
     /* defaults: by trial and error */
     bninput {
         vertical-align: baseline;
+
+        /* the best we can do */
+        width: calc(20ch + 15px);
+
+        font-family: Arial;
+        font-size: 10pt;
+        font: -moz-field;
+        font: -webkit-field;
+
+        appearance: textfield;
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
     }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    bninput {
+        /* Google Chrome 67.0.3396.99 (Official Build) (64-bit) */
+        background-color: white;
+        border: 2px inset rgb(238, 238, 238);
+    }
+}

@@ -8,7 +8,6 @@ body > div {
 body > div:not(.pure) > * {
   border: 1px dotted black;
   border-radius: 3px;
-  width: 200px;
 }
 
 body > div:not(.pure).fixedheight > * {
