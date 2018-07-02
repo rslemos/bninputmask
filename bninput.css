@@ -220,9 +220,13 @@
     }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
+    /* defaults for Google Chrome by trial and error */
+    /* also does a good job for Chromium, Opera and Vivaldi */
     bninput {
         /* Google Chrome 67.0.3396.99 (Official Build) (64-bit) */
         background-color: white;
         border: 2px inset rgb(238, 238, 238);
+        padding: 1px;
+        width: 20ch;
     }
 }
