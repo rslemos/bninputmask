@@ -20,7 +20,7 @@
     bninput placeholder {
         /* may be overridden */
         font: inherit;
-        color: inherit;
+        color: inherit; /* firefox only */
         text-decoration: inherit;
         text-emphasis: inherit;
         text-indent: inherit;
@@ -199,7 +199,7 @@
 
     bninput placeholder {
         /* resource://gre-resources/forms.css */
-        opacity: 0.54;
+        opacity: 0.54; /* firefox only */
     }
 
     /* defaults: by trial and error */
@@ -217,6 +217,8 @@
         appearance: textfield;
         -moz-appearance: textfield;
         -webkit-appearance: textfield;
+
+        padding: auto;
     }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -228,5 +230,11 @@
         border: 2px inset rgb(238, 238, 238);
         padding: 1px;
         width: 20ch;
+    }
+
+    bninput placeholder {
+        opacity: 1;
+        /* by trial and error */
+        color: rgb(117, 117, 117); 
     }
 }
