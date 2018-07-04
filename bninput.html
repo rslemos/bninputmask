@@ -10,8 +10,9 @@
 			var elements = document.getElementsByClassName('common');
 			for(var i=0; i< elements.length; i++) {
 				var element = elements[i];
-				for(var j=0; j< element.classList.length; j++) {
-					var class0 = element.classList[j];
+				var classList = element.classList || element.className.split(' ');
+				for(var j=0; j< classList.length; j++) {
+					var class0 = classList[j];
 					if (class0 !== 'common') {
 						var label = document.createElement('span');
 						label.textContent = class0;

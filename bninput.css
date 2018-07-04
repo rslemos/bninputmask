@@ -209,7 +209,7 @@
         /* the best we can do */
         width: calc(20ch + 15px);
 
-        font-family: Arial;
+        font-family: 'MS Shell Dlg', Arial;
         font-size: 10pt;
         font: -moz-field;
         font: -webkit-field;
@@ -217,6 +217,7 @@
         appearance: textfield;
         -moz-appearance: textfield;
         -webkit-appearance: textfield;
+        -ms-font-feature-settings: normal;
 
         padding: auto;
     }
@@ -237,4 +238,12 @@
         /* by trial and error */
         color: rgb(117, 117, 117); 
     }
+}
+
+/* IE10 and up */
+_:-ms-lang(x), bninput {
+        background-color: white;
+        border: 1px solid rgb(112, 112, 112);
+        padding: 2px 1px;
+        width: calc(20ch + 8px);
 }
